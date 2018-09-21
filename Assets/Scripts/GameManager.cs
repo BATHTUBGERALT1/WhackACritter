@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> critterPrefabs;
     public float critterSpawnFrequency = 1.0f;
     public Score scoreDisplay;
-    public Timer timer; 
+    public Timer timer;
+    public SpriteRenderer button; 
 
     private float lastCritterSpawn = 0;
     // Use this for initialization
@@ -43,6 +44,27 @@ public class GameManager : MonoBehaviour
 
             // update the most recent critter spawn time to now 
             lastCritterSpawn = Time.time;
+        }
+
+         //update button visibility 
+         if (timer.IsTimerRunning() == true)
+        {
+            button.enabled = false;
+        }
+         else
+        {
+            button.enabled = true; 
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        
+        if (timer.IsTimerRunning() == false)
+        {
+            // start new game 
+            timer.StartTimer();
+            scoreDisplay.ResetScore();
         }
     }
 }
