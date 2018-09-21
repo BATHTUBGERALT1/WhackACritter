@@ -7,7 +7,10 @@ public class Critter : MonoBehaviour {
     public Vector2 lowerRange;
     public Vector2 upperRange;
 
-    public Score scoreDisplay; 
+    public Score scoreDisplay;
+
+    public int pointValue = 1; // how much this critter is worth!
+
     // Use this for initialization
     void Start () {
         transform.position = new Vector3
@@ -21,7 +24,8 @@ public class Critter : MonoBehaviour {
     // unity calls this when the gameobject is clicked 
     private void OnMouseDown()
     {
-        scoreDisplay.ChangeValue(1);
+
+        scoreDisplay.ChangeValue(pointValue);
         Destroy(gameObject); 
     }
 }
